@@ -22,7 +22,9 @@ public class LoginUser {
 
     public User login(final String email, final String password) {
         User user = userRepository.findByEmail(email).orElseThrow(() -> new NotAllowedException("Not allowed"));
-
+        String hashedPassword = passwordEncoder.encode(email + password);
+        if (!user.getPassword().equals(hashedPassword)) throw new NotAllowedException("Not allowed");
+        return user;
     }
 
 }
