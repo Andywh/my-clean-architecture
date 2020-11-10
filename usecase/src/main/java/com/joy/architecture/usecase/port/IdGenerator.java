@@ -5,4 +5,7 @@ package com.joy.architecture.usecase.port;
  * @date 2020/11/10
  **/
 public interface IdGenerator {
+
+    String generate();
+
 }
